@@ -6,8 +6,10 @@ import 'package:quizapp/shared/bottom_nav.dart';
 import 'package:quizapp/shared/error.dart';
 import 'package:quizapp/shared/loading.dart';
 
+import 'drawer.dart';
+
 class TopicsScreen extends StatelessWidget {
-  const TopicsScreen({ Key? key }) : super(key: key);
+  const TopicsScreen({ Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,15 @@ class TopicsScreen extends StatelessWidget {
               backgroundColor: Colors.deepPurple,
               title: const Text('Topics'),
             ),
+
+            drawer: TopicDrawer(topics: topics),
+
             body: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(20.0),
               crossAxisSpacing: 10.0,
               crossAxisCount: 2,
-              children: topics.map((topic) => TopicItem(topic.title)).toList(),
+              children: topics.map((topic) => TopicItem(topic: topic)).toList(),
             ),
             bottomNavigationBar: const BottomNavBar(),
           );
